@@ -19,18 +19,18 @@ JButton reset;
   
 public void showButton(){  
   
-x=10; y=10;j=0;  
-for(i=0;i<=8;i++,x+=100,j++){  
+x=60; y=60;j=0;  
+for(i=0;i<=8;i++,x+=150,j++){  
  b[i]=new JButton();  
 if(j==3)  
-{j=0; y+=100; x=10;}  
- b[i].setBounds(x,y,100,100);  
+{j=0; y+=150; x=60;}  
+ b[i].setBounds(x,y,150,150);  
 add(b[i]);  
 b[i].addActionListener(this);  
 }
   
 reset=new JButton("RESET");  
-reset.setBounds(100,350,100,50);  
+reset.setBounds(180,550,200,60);  
 add(reset);  
 reset.addActionListener(this);  
   
@@ -89,17 +89,16 @@ public void complogic(int num){
   
   
 }
-
-
   
+ 
 TTT1(){  
 super("Tic Tac Toe");  
   
 CheckboxGroup cbg=new CheckboxGroup();  
 c1=new Checkbox("vs computer",cbg,false);  
 c2=new Checkbox("vs friend",cbg,false);  
-c1.setBounds(120,80,100,40);  
-c2.setBounds(120,150,100,40);  
+c1.setBounds(120,120,100,30);  
+c2.setBounds(120,160,100,30);  
 add(c1); add(c2);  
 c1.addItemListener(this);  
 c2.addItemListener(this);  
@@ -107,12 +106,12 @@ c2.addItemListener(this);
   
 state=true;type=true;set=true;  
 ic1=new ImageIcon("ic1.jpg");  
-ic2=new ImageIcon("ic2.jpg");  
+ic2=new ImageIcon("tick 1.jpg");  
 ic11=new ImageIcon("ic11.jpg");  
-ic22=new ImageIcon("ic22.jpg");  
+ic22=new ImageIcon("tick 2.jpg");  
   
 setLayout(null);  
-setSize(330,450);  
+setSize(570,700);  
 setVisible(true);  
 setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);  
 }
@@ -128,7 +127,7 @@ public void itemStateChanged(ItemEvent e){
   { type=true;  
   }  
 remove(c1);remove(c2);  
- repaint(0,0,330,450);  
+ repaint(0,0,570,700);  
  showButton();  
 }
 
@@ -193,14 +192,20 @@ for(i=0;i<=7;i++){
                  b[(a[i][1]-1)].setIcon(ic11);  
                  b[(a[i][2]-1)].setIcon(ic11);   
                  b[(a[i][3]-1)].setIcon(ic11);  
-    JOptionPane.showMessageDialog(TTT1.this,"!!!YOU won!!! click reset");     
+    JOptionPane.showMessageDialog(TTT1.this,"!!!YOU won!!! click reset");  
+    for(i=0;i<=8;i++){  
+        b[i].setIcon(null);  
+       }    
          break;  
                    }  
              else if(icon1==ic2){   
              b[(a[i][1]-1)].setIcon(ic22);  
              b[(a[i][2]-1)].setIcon(ic22);  
              b[(a[i][3]-1)].setIcon(ic22);   
-               JOptionPane.showMessageDialog(TTT1.this,"won! click reset");  
+               JOptionPane.showMessageDialog(TTT1.this,"You Lose! click reset");  
+               for(i=0;i<=8;i++){  
+                b[i].setIcon(null);  
+               } 
                 break;             
                }  
          }  
@@ -213,3 +218,4 @@ public static void main(String []args){
 new TTT1();  
 }
 }
+
